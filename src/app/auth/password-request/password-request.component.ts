@@ -32,7 +32,7 @@ export class PasswordRequestComponent implements OnInit {
     this.authService.requestPassword(this.passwordRequestForm.value).subscribe({
       next: (data) => {
         this.toaster.success(data.msg)
-        this.router.navigate(['auth/reset/password']);
+        this.router.navigate(['auth']);
       },
       error: (errors) => {
         this.toaster.error(errors.error.msg)

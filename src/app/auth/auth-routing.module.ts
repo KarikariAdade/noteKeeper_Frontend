@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: AuthComponent, canActivate: [GuestGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [GuestGuard]},
   { path: 'request/password', component: PasswordRequestComponent, canActivate: [GuestGuard]},
-  { path: 'reset/password', component: PasswordResetComponent, canActivate: [GuestGuard]}
+  { path: 'reset/password/:token', component: PasswordResetComponent, canActivate: [GuestGuard]}
 ];
 
 @NgModule({

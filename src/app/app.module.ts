@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HeaderComponent } from './layouts/header/header.component';
-import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {ToastrModule} from "ngx-toastr";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -21,6 +20,8 @@ import {
   NgxUiLoaderRouterModule, PB_DIRECTION,
   POSITION, SPINNER,
 } from "ngx-ui-loader";
+import { NavComponent } from './layouts/nav/nav.component';
+import {NoteModule} from "./note/note.module";
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -36,14 +37,13 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsOpacity: 1
 };
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    FooterComponent,
-    HeaderComponent,
-    SidebarComponent,
-    PageNotFoundComponent,
-  ],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        FooterComponent,
+        HeaderComponent,
+        PageNotFoundComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -61,11 +61,14 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     // NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
-    NgxUiLoaderHttpModule
+    NgxUiLoaderHttpModule,
+    NoteModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    ],
+  exports: [
   ],
-  bootstrap: [AppComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

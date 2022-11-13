@@ -41,6 +41,10 @@ export class AuthService {
     return this.http.post(this.apiUrl + 'password/forgot', user);
   }
 
+  resetPassword(user: User): Observable<any>{
+    return this.http.post(this.apiUrl + 'password/reset', user);
+  }
+
   saveToken(token:any){
     return localStorage.setItem('token', token)
   }

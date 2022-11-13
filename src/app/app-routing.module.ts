@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'auth', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'notes', loadChildren: () => import('./note/note.module').then(m => m.NoteModule), canActivate: [AuthGuard] },
 
   {path: '**', component: PageNotFoundComponent}
 
